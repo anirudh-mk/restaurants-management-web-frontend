@@ -11,15 +11,19 @@ function ImageCard({ src, alt, name, rating, size }) {
                 className='image-card--image'
                 style={size === 'lg' ? { width: '100%' } : null}
             />
-            <div className='image-card--headdings' >
+            <div className='image-card--headdings' style={size == 'lg' ? { paddingInline: 16 } : {}} >
                 <p>Burger</p>
-                <div className='image-card--sub-headding'>
+                <div className='image-card--rating'>
                     <FontAwesomeIcon icon={faStar} size='md' color='#FFD600' />
                     <p>4.2</p>
                 </div>
             </div>
-            <div>
-
+            <div className='image-card--sub-headding' style={size === 'lg' ? { paddingBottom: 16, paddingInline: 16, justifyContent: 'space-between' } : {}}>
+                {size && <div className='image-card-description'>
+                    <div className='circle' />
+                    <p>veg</p>
+                </div>}
+                <p className='image-card-amount' style={size !== 'lg' ? { justifyContent: 'end', width: '100%' } : {}}>₹ {120}</p>
             </div>
         </div >
     )

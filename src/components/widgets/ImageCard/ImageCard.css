@@ -21,12 +21,38 @@
     justify-content: space-between;
 }
 
-.image-card--sub-headding {
+.image-card--rating {
     display: flex;
     align-items: center;
-    padding-bottom: 10px;
 }
 
-.image-card--sub-headding>p {
+.image-card--rating>p {
     padding-left: 5px;
+}
+
+.circle {
+    background-color: gray;
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+}
+
+.image-card--sub-headding {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.image-card-description {
+    display: flex;
+    align-items: center;
+}
+
+.image-card-description>p {
+    padding-left: 5px;
+    color: gray;
+}
+
+.image-card-amount {
+    display: flex;
 }
