@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './RestaurantScreen.css'
 import MenuFilteringCard from '../../widgets/MenuFilteringCard/MenuFilteringCard'
 import ImageCard from '../../widgets/ImageCard/ImageCard'
+import { supabase } from '../../../config/SupabaseClient'
 
 function RestaurantScreen() {
+    const [foods, setFoods] = useState([]);
+
+    useEffect(() => {
+        getFoods();
+    }, []);
+
+    async function getFoods() {
+        const { data } = await supabase.from("foods").select();
+        setFoods(data);
+    }
+
     return (
         <div className='restaurant'>
             <nav className='resturant--headding-container'>
@@ -46,20 +58,26 @@ function RestaurantScreen() {
             </div>
             <h2 className='restaurant--sub-headding'>Popular</h2>
             <div className='restaurant--horizontal-scroll'>
-                <ImageCard />
-                <ImageCard />
-                <ImageCard />
-                <ImageCard />
-                <ImageCard />
+                {foods.map(
+                    (food) => (
+                        <ImageCard
+                            key={food.id}
+                            name={food.title}
+                            rating={food.rating}
+                            price={food.price}
+                        />))}
 
             </div>
             <h2 className='restaurant--sub-headding'>Menu</h2>
-            <ImageCard size='lg' />
-            <ImageCard size='lg' />
-            <ImageCard size='lg' />
-            <ImageCard size='lg' />
-            <ImageCard size='lg' />
-
+            {foods.map(
+                (food) => (
+                    <ImageCard
+                        key={food.id}
+                        name={food.title}
+                        rating={food.rating}
+                        price={food.price}
+                        size='lg'
+                    />))}
         </div>
     )
 }
