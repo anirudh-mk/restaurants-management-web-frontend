@@ -1,11 +1,13 @@
-import React from 'react'
-import supabase from './config/SupabaseClient'
+import { useEffect, useState } from "react";
+import Headder from "./components/widgets/Headder/Headder";
+import RestaurantScreen from "./components/screens/RestaurantScreen/RestaurantScreen";
 
 function App() {
-  console.log(supabase)
   return (
-    <div>App</div>
-  )
+    <>
+      <RestaurantScreen />
+    </>
+  );
 }
 
-export default App
+export default App;
