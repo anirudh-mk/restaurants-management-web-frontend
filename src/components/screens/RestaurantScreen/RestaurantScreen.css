@@ -1,0 +1,48 @@
+.restaurant {}
+
+.resturant--headding-container {
+    padding: 16px;
+}
+
+.restaurant--headding {
+    padding-bottom: 10px;
+}
+
+.restaurant--search {
+    width: 100%;
+    display: block;
+    padding: 9px 4px 9px 40px;
+    border: none;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    background: rgb(247, 247, 247) url('../../../assets/icons/search.svg') no-repeat 13px;
+    background-size: 16px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.restaurant--horizontal-scroll {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.restaurant--horizontal-scroll:hover {
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.restaurant--horizontal-scroll:focus {
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.restaurant--show-all {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+}
