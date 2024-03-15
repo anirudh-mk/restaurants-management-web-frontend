@@ -3,23 +3,38 @@ import './RestaurantScreen.css'
 import MenuFilteringCard from '../../widgets/MenuFilteringCard/MenuFilteringCard'
 import ImageCard from '../../widgets/ImageCard/ImageCard'
 import { supabase } from '../../../config/SupabaseClient'
+import { useParams } from 'react-router-dom';
 
 function RestaurantScreen() {
+    let { resturent_id } = useParams();
     const [foods, setFoods] = useState([]);
-
+    const [restaurant, setRestaurant] = useState()
+    console.log('====================================');
+    console.log(foods);
+    console.log('====================================');
     useEffect(() => {
         getFoods();
+        getHotel();
     }, []);
 
     async function getFoods() {
-        const { data } = await supabase.from("foods").select();
+        const { data } = await supabase.from("restaurant_food_link")
+            .select('food(*)')
+            .eq('restaurant', resturent_id)
         setFoods(data);
+    }
+
+    async function getHotel() {
+        const { data } = await supabase.from("restaurant")
+            .select('*')
+            .eq('id', resturent_id)
+        setRestaurant(data[0])
     }
 
     return (
         <div className='restaurant'>
             <nav className='resturant--headding-container'>
-                <h1 className='restaurant--headding'>Resturent Name</h1>
+                <h1 className='restaurant--headding'>{restaurant.title}</h1>
                 <input
                     type="search"
                     placeholder="Search...."
@@ -61,10 +76,10 @@ function RestaurantScreen() {
                 {foods.map(
                     (food) => (
                         <ImageCard
-                            key={food.id}
-                            name={food.title}
-                            rating={food.rating}
-                            price={food.price}
+                            key={food.food.id}
+                            name={food.food.title}
+                            rating={food.food.rating}
+                            price={food.food.price}
                         />))}
 
             </div>
@@ -72,10 +87,10 @@ function RestaurantScreen() {
             {foods.map(
                 (food) => (
                     <ImageCard
-                        key={food.id}
-                        name={food.title}
-                        rating={food.rating}
-                        price={food.price}
+                        key={food.food.id}
+                        name={food.food.title}
+                        rating={food.food.rating}
+                        price={food.food.price}
                         size='lg'
                     />))}
         </div>
