@@ -17,7 +17,7 @@ function ImageCard({ src, alt, name, rating, size, price }) {
                     style={size !== 'lg' ? { whiteSpace: 'nowrap', width: 50, overflow: 'hidden', textOverflow: 'ellipsis' } : {}}
                 >{name}</p>
                 <div className='image-card--rating'>
-                    <FontAwesomeIcon icon={faStar} size='md' color='#FFD600' />
+                    <FontAwesomeIcon icon={faStar} size='1x' color='#FFD600' />
                     <p>{rating}</p>
                 </div>
             </div>
